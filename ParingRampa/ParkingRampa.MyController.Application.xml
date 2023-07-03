@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Symbolconfiguration xmlns="http://www.3s-software.com/schemas/Symbolconfiguration.xsd">
+  <Header>
+    <Version>3.5.3.50</Version>
+    <SymbolConfigObject version="3.5.3.50" />
+    <ProjectInfo name="KafeAparat" devicename="MyController" appname="Application" />
+  </Header>
+  <TypeList>
+    <TypeSimple name="T_BOOL" size="1" swapsize="0" typeclass="Bool" iecname="BOOL" />
+    <TypeSimple name="T_TIME" size="4" swapsize="4" typeclass="Time" iecname="TIME" />
+    <TypeUserDef name="T_IecSfc_SFCStepType" size="16" nativesize="16" typeclass="Userdef" iecname="IecSfc.SFCStepType">
+      <UserDefElement type="T_BOOL" iecname="x" byteoffset="0" />
+      <UserDefElement type="T_TIME" iecname="t" byteoffset="4" />
+      <UserDefElement type="T_BOOL" iecname="_x" byteoffset="8" />
+      <UserDefElement type="T_TIME" iecname="_t" byteoffset="12" />
+    </TypeUserDef>
+    <TypeUserDef name="T_F_TRIG" size="8" nativesize="8" typeclass="Userdef" iecname="F_TRIG">
+      <UserDefElement type="T_BOOL" iecname="CLK" byteoffset="4" />
+      <UserDefElement type="T_BOOL" iecname="Q" byteoffset="5" />
+    </TypeUserDef>
+    <TypeUserDef name="T_TP" size="24" nativesize="24" typeclass="Userdef" iecname="TP">
+      <UserDefElement type="T_BOOL" iecname="IN" byteoffset="4" />
+      <UserDefElement type="T_TIME" iecname="PT" byteoffset="8" />
+      <UserDefElement type="T_BOOL" iecname="Q" byteoffset="12" />
+      <UserDefElement type="T_TIME" iecname="ET" byteoffset="16" />
+    </TypeUserDef>
+    <TypeSimple name="T_INT" size="2" swapsize="2" typeclass="Int" iecname="INT" />
+  </TypeList>
+  <NodeList>
+    <Node name="Application">
+      <Node name="GVL">
+        <Node name="hitan_stop" type="T_BOOL" access="ReadWrite" />
+        <Node name="ima_auto" type="T_BOOL" access="ReadWrite" />
+        <Node name="ima_papir" type="T_BOOL" access="ReadWrite" />
+        <Node name="motor" type="T_BOOL" access="ReadWrite" />
+        <Node name="motor_neg" type="T_BOOL" access="ReadWrite" />
+        <Node name="motor_poz" type="T_BOOL" access="ReadWrite" />
+        <Node name="okidac_senzor" type="T_BOOL" access="ReadWrite" />
+        <Node name="okidac_timer_30" type="T_BOOL" access="ReadWrite" />
+        <Node name="pocetak" type="T_BOOL" access="ReadWrite" />
+        <Node name="polozaj_dole" type="T_BOOL" access="ReadWrite" />
+        <Node name="polozaj_gore" type="T_BOOL" access="ReadWrite" />
+        <Node name="pom" type="T_BOOL" access="ReadWrite" />
+        <Node name="potenciometar" type="T_INT" access="ReadWrite" />
+        <Node name="potvrda" type="T_BOOL" access="ReadWrite" />
+        <Node name="potvrda_preuzeta" type="T_BOOL" access="ReadWrite" />
+        <Node name="radi_motor" type="T_BOOL" access="ReadWrite" />
+        <Node name="senzor" type="T_BOOL" access="ReadWrite" />
+        <Node name="start" type="T_BOOL" access="ReadWrite" />
+        <Node name="taster" type="T_BOOL" access="ReadWrite" />
+        <Node name="Termicki_relej" type="T_BOOL" access="ReadWrite" />
+        <Node name="timer_30s" type="T_TP" access="ReadWrite" />
+        <Node name="timer_30s_triger" type="T_F_TRIG" access="ReadWrite" />
+        <Node name="timer_5s" type="T_TP" access="ReadWrite" />
+        <Node name="timer_triger" type="T_F_TRIG" access="ReadWrite" />
+        <Node name="vrijeme_dana" type="T_TIME" access="ReadWrite" />
+      </Node>
+      <Node name="POU">
+        <Node name="auta_ima" type="T_IecSfc_SFCStepType" access="ReadWrite" />
+        <Node name="auta_nema" type="T_IecSfc_SFCStepType" access="ReadWrite" />
+        <Node name="Branch0__auta_ima__to__cekanje_5_sekundi" type="T_BOOL" access="ReadWrite" />
+        <Node name="Branch0__auta_nema__to__auta_ima" type="T_BOOL" access="ReadWrite" />
+        <Node name="Branch0__cekanje_5_sekundi__to__spustanje_rampe" type="T_BOOL" access="ReadWrite" />
+        <Node name="Branch0__preuzimanje_potvrde__to__podizanje_rampe" type="T_BOOL" access="ReadWrite" />
+        <Node name="Branch0__spustanje_rampe__to__start_system" type="T_BOOL" access="ReadWrite" />
+        <Node name="Branch0__start_system__to__preuzimanje_potvrde" type="T_BOOL" access="ReadWrite" />
+        <Node name="Branch1__auta_ima__to__Init" type="T_BOOL" access="ReadWrite" />
+        <Node name="Branch1__auta_nema__to__spustanje_rampe" type="T_BOOL" access="ReadWrite" />
+        <Node name="Branch1__cekanje_5_sekundi__to__Init" type="T_BOOL" access="ReadWrite" />
+        <Node name="Branch1__preuzimanje_potvrde__to__motor_crko" type="T_BOOL" access="ReadWrite" />
+        <Node name="Branch1__spustanje_rampe__to__Init" type="T_BOOL" access="ReadWrite" />
+        <Node name="Branch1__start_system__to__Init" type="T_BOOL" access="ReadWrite" />
+        <Node name="Branch2__auta_nema__to__Init" type="T_BOOL" access="ReadWrite" />
+        <Node name="Branch2__preuzimanje_potvrde__to__Init" type="T_BOOL" access="ReadWrite" />
+        <Node name="cekanje_5_sekundi" type="T_IecSfc_SFCStepType" access="ReadWrite" />
+        <Node name="Init" type="T_IecSfc_SFCStepType" access="ReadWrite" />
+        <Node name="Init__to__start_system" type="T_BOOL" access="ReadWrite" />
+        <Node name="motor_crko" type="T_IecSfc_SFCStepType" access="ReadWrite" />
+        <Node name="motor_crko__to__start_system" type="T_BOOL" access="ReadWrite" />
+        <Node name="podizanje_rampe" type="T_IecSfc_SFCStepType" access="ReadWrite" />
+        <Node name="podizanje_rampe__to__auta_nema" type="T_BOOL" access="ReadWrite" />
+        <Node name="preuzimanje_potvrde" type="T_IecSfc_SFCStepType" access="ReadWrite" />
+        <Node name="spustanje_rampe" type="T_IecSfc_SFCStepType" access="ReadWrite" />
+        <Node name="start_system" type="T_IecSfc_SFCStepType" access="ReadWrite" />
+      </Node>
+    </Node>
+  </NodeList>
+</Symbolconfiguration>
