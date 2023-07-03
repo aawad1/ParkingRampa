@@ -1,5 +1,7 @@
 # ParkingRampa
 
+- Implementacija parking rampe putem PLC-a i korištenjem SoMachine programskog jezika.
+
 U radu se opisuje implementacija pojednostavljene rampe za ogranicavanje ulaza na parking. Rampa se sastoji od nekoliko kljucnih elemenata, ukljucujuci parking taster, parking rampu, potenciometar i IC senzor.
 Parking taster omogucava vozacu da podigne rampu pritiskom na taster, što omogucava prolaz automobila. Istovremeno, generira se potvrda o ulasku sa zabilježenim vremenom ulaska. 
 Parking rampa se podiže i spušta pomocu DC motora visoke snage. Motor se okrece u jednom smjeru kako bi se rampa podigla, dok se u drugom smjeru rampa spušta. 
